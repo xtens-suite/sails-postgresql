@@ -1,22 +1,9 @@
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   ╔╦╗╦═╗╔═╗╦  ╦╦╔═╗ ┬ ┬┌┬┐┬                           #
-#    ║ ╠╦╝╠═╣╚╗╔╝║╚═╗ └┬┘││││                           #
-#  o ╩ ╩╚═╩ ╩ ╚╝ ╩╚═╝o ┴ ┴ ┴┴─┘                         #
-#                                                       #
-# This file configures Travis CI.                       #
-# (i.e. how we run the tests... mainly)                 #
-#                                                       #
-# https://docs.travis-ci.com/user/customizing-the-build #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 language: node_js
-
 node_js:
-  - "4"
-  - "6"
-  - "8"
-  - "node"
-
+  - "5.0"
+  - "4.0"
+  - "0.12"
+  - "0.10"
 services: postgresql
 addons:
   postgresql: "9.4"
@@ -24,14 +11,9 @@ sudo: false
 env:
   - DB_USER=postgres DB_PASS=''
 env:
-  - WATERLINE_ADAPTER_TESTS_HOST=127.0.0.1 WATERLINE_ADAPTER_TESTS_USER=postgres WATERLINE_ADAPTER_TESTS_PASSWORD='' WATERLINE_ADAPTER_TESTS_DATABASE=adapter-tests
+  - WATERLINE_ADAPTER_TESTS_HOST=127.0.0.1 WATERLINE_ADAPTER_TESTS_USER=postgres WATERLINE_ADAPTER_TESTS_PASSWORD='' WATERLINE_ADAPTER_TESTS_DATABASE=sailspg
 before_script:
-  - psql -c 'create database "adapter-tests";' -U postgres
-
-branches:
-  only:
-    - master
-
+  - psql -c 'create database sailspg;' -U postgres
 notifications:
   email:
-    - ci@sailsjs.com
+    - particlebanana@gmail.com

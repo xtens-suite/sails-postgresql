@@ -8,7 +8,13 @@ test-unit:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		$(MOCHA_OPTS) \
-		test/adapter/unit/**
+		test/unit/**
 
 test-integration:
-	@NODE_ENV=test node test/adapter/integration/runner.js
+	@NODE_ENV=test node test/integration/runner.js
+
+test-load:
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		$(MOCHA_OPTS) \
+		test/load/**
